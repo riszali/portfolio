@@ -1,0 +1,356 @@
+/* Typography & Utilities */
+.font-space { font-family: 'Space Grotesk', sans-serif; }
+
+/* Optimasi Animasi GPU */
+.will-change-transform {
+    will-change: transform;
+}
+
+/* --- STYLING KHUSUS SECTION 3 (ADVANCED SLIDER & SPOTLIGHT) --- */
+.slider-viewport {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+}
+.slider-track {
+    display: flex;
+    gap: 24px;
+    will-change: transform;
+    transition: none; /* Dikelola oleh GSAP */
+}
+.btn-nav-slider {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.btn-nav-slider:hover:not(:disabled) {
+    background: #f9005b;
+    border-color: #f9005b;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(249,0,91,0.5);
+}
+.btn-nav-slider:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    transform: scale(0.9);
+}
+/* Progress bar slider */
+.slider-progress-bg {
+    width: 200px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.slider-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background: #f9005b;
+    box-shadow: 0 0 10px #f9005b;
+}
+
+/* Tech Card Spotlight Effect */
+.slide-item {
+    position: relative;
+}
+.slide-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    /* Efek cahaya akan mengikuti variabel --mouse-x dan --mouse-y */
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(249,0,91,0.15), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.slide-item:hover::before {
+    opacity: 1;
+}
+
+/* --- Animasi Marquee Tech Stack --- */
+.marquee-container {
+    display: flex;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+    will-change: transform;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- Untuk Canvas Portaplane agar presisi --- */
+#portaplane-canvas-wrapper canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    outline: none;
+}
+
+/* --- STYLING KHUSUS WEB DEVELOPMENT (MODAL & SCROLLBAR) --- */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #000000;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #f9005b;
+    border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9d00ff;
+}
+
+@keyframes pulse-fast {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+.loading-pulse {
+    animation: pulse-fast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    pointer-events: none;
+}
+
+/* ========================================================================
+   STYLING INTERACTIVE JOKE CTA (BOI CHARACTER)
+   ======================================================================== */
+.Confirm-UI {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    height: 550px;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.Confirm-Header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 0 0 4rem;
+    margin: 0 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+}
+
+.Confirm-Header-Button {
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    transition: background-color 0.3s;
+    margin-right: 0.8rem;
+}
+
+.Confirm-Header-Button_Close { background-color: #f9005b; }
+.Confirm-Header-Button_Close:hover { background-color: #ff337a; }
+.Confirm-Header-Button_Minimize { background-color: #eab308; }
+.Confirm-Header-Button_Minimize:hover { background-color: #facc15; }
+.Confirm-Header-Button_Maximize { background-color: #22c55e; }
+.Confirm-Header-Button_Maximize:hover { background-color: #4ade80; }
+
+.Confirm-Header-Title {
+    margin: 0 50% 0 auto;
+    padding: 0;
+    transform: translateX(50%);
+    color: white;
+    font-family: monospace;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.Confirm-Body {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    margin: 2rem 4rem;
+}
+
+.Confirm-Body-Title {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 15%;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.Confirm-Body-Button {
+    color: #fff;
+    border-radius: 1rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    min-width: 12rem;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-family: 'Space Grotesk', sans-serif;
+    z-index: 20;
+    font-size: 0.9rem;
+}
+
+.Confirm-Body-Button_Cancel {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.Confirm-Body-Button_Cancel:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.Confirm-Body-Button_Delete {
+    background-color: #f9005b;
+    box-shadow: 0 0 15px rgba(249,0,91,0.4);
+}
+
+.Confirm-Body-Button_Delete:hover {
+    background-color: #ff1a6b;
+    box-shadow: 0 0 30px rgba(249,0,91,0.8);
+    transform: scale(1.05);
+}
+
+/* Character Styling */
+.Boi {
+    --happiness: 0.9;
+    --derp: 1;
+    --px: 0.5;
+    --py: 0.5;
+    
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    top: 62%; /* BOI DITURUNKAN KE BAWAH AGAR TIDAK MENUTUPI TEKS JOKE */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: radial-gradient(#ffe082, #eab308);
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0;
+    border: solid 2px #ca8a04;
+    box-shadow: 0px 0px 30px rgba(234, 179, 8, 0.2);
+    z-index: 10;
+}
+
+.Boi::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(85,170,136, 1), rgba(85,170,136, 0));
+    opacity: calc(1 - var(--happiness));
+}
+
+.Boi-Blush {
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    background-color: rgba(255, 100, 100, 0.3);
+    border: 3px solid rgba(255, 100, 100, 0.3);
+    top: calc(45% + var(--py) * 10%);
+    border-radius: 100%;
+    opacity: calc(var(--happiness) * var(--happiness) * 0.9 + 0.1);
+}
+
+.Boi-Blush_L { left: calc(7% + var(--px) * 2%); }
+.Boi-Blush_R { right: calc(9% - var(--px) * 2%); }
+
+.Boi-Eye {
+    position: absolute;
+    width: calc(26% - var(--happiness) * 2%);
+    height: calc(26% - var(--happiness) * 2%);
+    background-color: #f6f6f6;
+    border-radius: 100%;
+    top: calc(25% + var(--py) * 10%);
+    overflow: hidden;
+}
+
+.Boi-Eye_L { left: calc(18% + var(--px) * 4%); }
+.Boi-Eye_L::after { transform: translate(calc((var(--px) + var(--derp) * 0.5) * 100%), calc((var(--py) + var(--derp) * 0.5) * 100%)); }
+
+.Boi-Eye_R { right: calc(22% - var(--px) * 4%); }
+.Boi-Eye_R::after { transform: translate(calc((var(--px) + var(--derp) * -0.3) * 100%), calc((var(--py) + var(--derp) * -0.3) * 100%)); }
+
+.Boi-Eye::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: #421;
+    width: calc(55% - var(--happiness) * 10%);
+    height: calc(55% - var(--happiness) * 10%);
+    border-radius: 100%;
+}
+
+.Boi-Mouth {
+    position: absolute;
+    width: calc(51% - var(--happiness) * 2%);
+    height: calc(26% - var(--happiness) * 2%);
+    background-color: #a33;
+    border-radius: calc((1 - var(--happiness)) * 10rem) calc((1 - var(--happiness)) * 10rem) calc(var(--happiness) * 16rem) calc(var(--happiness) * 16rem);
+    top: calc(57.5% + var(--py) * 5%);
+    left: calc(47.5% + var(--px) * 5%);
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 3px solid #8a2b2b;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.Boi-Mouth::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.Boi-Mouth::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    left: 20%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20rem 20rem 0 0;
+}
+
+@media screen and (max-width: 768px) {
+    .Confirm-UI { height: 520px; } /* Ditambah tinggi agar teks lega */
+    .Confirm-Body { flex-direction: column; align-items: center; justify-content: flex-end; margin: 1rem; }
+    .Confirm-Body-Button { width: 100%; margin-bottom: 0.5rem; }
+    .Boi { width: 12rem; height: 12rem; top: 55%; } /* Boi diturunkan di versi HP */
+    .Confirm-Body-Title { top: 8%; } /* Teks dinaikkan sedikit ke atas */
+}
