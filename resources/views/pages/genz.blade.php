@@ -34,6 +34,8 @@
             box-shadow: inset 0 0 0 4px #d67a4e, inset 0 -20px 0 #faad84, inset 0 -40px 0 -15px #d67a4e;
             position: relative;
             transition: 0.2s ease-in-out;
+            cursor: pointer; /* Menambahkan cursor pointer agar pengguna tahu ini bisa diklik/disentuh */
+            -webkit-tap-highlight-color: transparent; /* Menghilangkan highlight biru saat disentuh di HP */
         }
 
         .head:after {
@@ -51,52 +53,52 @@
             transform: translateX(-50%) scaleY(0);
         }
 
-        /* Saat di Hover / Trigger Mental Health Breakdown-nya */
-        .head:hover {
+        /* Saat di Hover (PC) atau kelas is-angry aktif (Mobile/Touch) */
+        .head:hover, .head.is-angry {
             background: #ce0010;
             border-radius: 500% 500% 500% 500% / 500% 500% 800% 800%;
             height: 280px;
             box-shadow: inset 0 0 0 5px #99000c, 0 0 700px 60px #99000c, 0 0 0 10000px #000000;
         }
 
-        .head:hover:after {
+        .head:hover:after, .head.is-angry:after {
             transform: translateX(-50%) scaleY(1);
         }
 
-        .head:hover .eye {
+        .head:hover .eye, .head.is-angry .eye {
             background: linear-gradient(to right, transparent, transparent 10px, #660008 10px, #660008 15px, transparent 15px), #f9eb9c;
             background-position: 5px 25px, center;
             box-shadow: 0 0 0 15px #b3000e;
         }
 
-        .head:hover .eye.second:after {
+        .head:hover .eye.second:after, .head.is-angry .eye.second:after {
             box-shadow: 0 5px 0 0 #660008;
         }
 
-        .head:hover .eye:before {
+        .head:hover .eye:before, .head.is-angry .eye:before {
             background: transparent;
             box-shadow: inset 5px -15px 0 0 #660008;
         }
 
-        .head:hover .ear {
+        .head:hover .ear, .head.is-angry .ear {
             background: #ce0010;
             box-shadow: -3px -3px 0 3px #660008, -3px 3px 0 3px #660008;
             border-radius: 0px 0px 0px 500px;
             transform: skewY(30deg) translateX(-10px) translateY(-10px);
         }
 
-        .head:hover .ear:nth-of-type(2) {
+        .head:hover .ear:nth-of-type(2), .head.is-angry .ear:nth-of-type(2) {
             transform: scaleX(-1) skewY(30deg) translateX(-10px) translateY(-10px);
         }
 
-        .head:hover .mouth {
+        .head:hover .mouth, .head.is-angry .mouth {
             background: #4d0006;
             transform: translateX(-50%) translateY(20px);
             height: 50px;
             border-radius: 0 0 300% 300% / 0 0 500% 500%;
         }
 
-        .head:hover .mouth .jowl {
+        .head:hover .mouth .jowl, .head.is-angry .mouth .jowl {
             opacity: 1;
             background: transparent;
             box-shadow: 4px -5px 0 0 #99000c;
@@ -104,23 +106,25 @@
             border-radius: 0 100% 0 100%;
         }
 
-        .head:hover .mouth .jowl:before, .head:hover .mouth .jowl:after {
+        .head:hover .mouth .jowl:before, .head.is-angry .mouth .jowl:before,
+        .head:hover .mouth .jowl:after, .head.is-angry .mouth .jowl:after {
             transition: 0.1s;
             transition-delay: 0.2s;
             transform: scaleY(1);
         }
 
-        .head:hover .mouth .jowl:nth-of-type(2) {
+        .head:hover .mouth .jowl:nth-of-type(2), .head.is-angry .mouth .jowl:nth-of-type(2) {
             box-shadow: -4px -5px 0 0 #99000c;
             transform: translateX(10px);
             border-radius: 100% 0 100% 0;
         }
 
-        .head:hover .mouth .jowl:nth-of-type(2):after {
+        .head:hover .mouth .jowl:nth-of-type(2):after, .head.is-angry .mouth .jowl:nth-of-type(2):after {
             display: none;
         }
 
-        .head:hover .mouth:before, .head:hover .mouth:after {
+        .head:hover .mouth:before, .head.is-angry .mouth:before,
+        .head:hover .mouth:after, .head.is-angry .mouth:after {
             opacity: 1;
             border-width: 5px 60px 5px 0;
             border-color: transparent #000 transparent transparent;
@@ -129,13 +133,13 @@
             transform: rotate(-15deg);
         }
 
-        .head:hover .mouth:after {
+        .head:hover .mouth:after, .head.is-angry .mouth:after {
             left: auto;
             right: -10px;
             transform: rotate(15deg) scaleX(-1);
         }
 
-        .head:hover .deadanimal {
+        .head:hover .deadanimal, .head.is-angry .deadanimal {
             background: #ce0010;
             width: 100%;
             border-radius: 500% 500% 0 0 / 600% 600% 0 0;
@@ -144,14 +148,15 @@
             height: 200px;
         }
 
-        .head:hover .deadanimal:before, .head:hover .deadanimal:after {
+        .head:hover .deadanimal:before, .head.is-angry .deadanimal:before,
+        .head:hover .deadanimal:after, .head.is-angry .deadanimal:after {
             background: transparent;
             box-shadow: inset 20px -20px 0px #fdf9e2, inset 20px -40px 0px #faefb9;
             border-radius: 100%;
             transform: translateX(-20px) translateY(-120px) rotate(-25deg);
         }
 
-        .head:hover .deadanimal:after {
+        .head:hover .deadanimal:after, .head.is-angry .deadanimal:after {
             box-shadow: inset -20px -20px 0px #fdf9e2, inset -20px -40px 0px #faefb9;
             transform: translateX(20px) translateY(-120px) rotate(25deg);
         }
@@ -344,6 +349,7 @@
             text-align: center;
             color: #fff;
             z-index: 10;
+            padding: 0 20px; /* Tambahan padding untuk layar kecil */
         }
         
         .message-container h2 {
@@ -356,6 +362,7 @@
             color: #fdf9e2;
             font-size: 14px;
             margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         .btn-back {
@@ -378,12 +385,24 @@
             color: #ce0010;
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
         }
+
+        /* Penyesuaian responsif untuk layar yang sangat kecil (Mobile) */
+        @media (max-width: 400px) {
+            .head {
+                transform: scale(0.8);
+                margin-top: 0;
+            }
+            .message-container {
+                bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Animasi Monster yang Dikonversi dari HAML -->
-    <div class="head" title="Arahkan kursor ke saya!">
+    <!-- Menambahkan ID untuk menargetkan elemen dengan JS -->
+    <div class="head" id="monster-head" title="Arahkan kursor atau sentuh saya!">
         <div class="deadanimal"></div>
         <div class="ear"></div>
         <div class="ear"></div>
@@ -398,9 +417,21 @@
     <!-- Teks Sindiran HRD & Tombol Kembali -->
     <div class="message-container">
         <h2>Developer Gen Z sedang "Healing" ✨</h2>
-        <p>Arahkan kursor Anda ke si tua yang anda tolak di atas kalau tidak percaya.</p>
+        <!-- Teks diubah sedikit agar relevan dengan interaksi tap di HP -->
+        <p>Arahkan kursor atau <b>sentuh</b> si tua yang Anda tolak di atas kalau tidak percaya.</p>
         <a href="{{ route('home') }}" class="btn-back">Kembali ke Senior Dev</a>
     </div>
 
+    <!-- Script untuk menangani sentuhan di HP -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headElement = document.getElementById('monster-head');
+            
+            // Toggle class 'is-angry' saat diklik atau disentuh (touch)
+            headElement.addEventListener('click', function() {
+                this.classList.toggle('is-angry');
+            });
+        });
+    </script>
 </body>
 </html>
