@@ -3,8 +3,8 @@
     <!-- Mengambil font khusus dari desain Anda -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <!-- Memuat CSS Khusus Halaman Home -->
-    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <!-- Memuat CSS Khusus Halaman Home dengan Cache Busting -->
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}?v={{ time() }}">
 
     <!-- ==============================================
          SECTION 1: THE HOOK (Hero Section) 
@@ -687,7 +687,8 @@
         <div class="relative w-full h-full flex items-center justify-center p-4 md:p-10 pt-20">
             <!-- Iframe / Video Container -->
             <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-black relative border border-white/10">
-                <iframe id="modal-iframe" src="about:blank" class="w-full h-full border-none" allow="autoplay; fullscreen" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+                <!-- HAPUS ATRIBUT SANDBOX AGAR WARNING KUNING DI CONSOLE HILANG -->
+                <iframe id="modal-iframe" src="about:blank" class="w-full h-full border-none" allow="autoplay; fullscreen"></iframe>
             </div>
 
             <!-- Loader -->
@@ -710,7 +711,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- Memuat Script Animasi & Fungsionalitas Utama -->
-    <script src="{{ asset('assets/js/home.js') }}"></script>
+    <!-- Memuat Script Animasi & Fungsionalitas Utama dengan Cache Busting -->
+    <script src="{{ asset('assets/js/home.js') }}?v={{ time() }}"></script>
 
 </x-layouts.app>
