@@ -464,7 +464,7 @@
             </div>
         </div>
 
-        <!-- PROJECT 02: MAISON DE RAUX (PHOTOGRAPHY SLIDER) -->
+        <!-- PROJECT 02: MAISON DE RAUX (PHOTOGRAPHY SCROLLTRIGGER) -->
         <div class="mt-40 flex flex-col lg:flex-row-reverse justify-between items-start lg:items-end gap-8 mb-16 border-t border-white/5 pt-20">
             <div class="max-w-2xl text-left lg:text-right">
                 <div class="flex items-center lg:justify-end gap-4 mb-6">
@@ -472,7 +472,6 @@
                     <div class="h-px w-20 bg-gray-700"></div>
                     <span class="text-5xl font-black text-transparent bg-clip-text bg-linear-to-bl from-gray-700 to-gray-900 font-space">02</span>
                 </div>
-                <!-- Menambahkan class rounded-2xl dan overflow-hidden agar gambar melengkung ujungnya -->
                 <img src="{{ asset('assets/images/logo-client/images.png') }}" alt="Maison de Raux Logo" class="h-12 md:h-16 w-auto object-cover rounded-2xl mb-8 ml-0 lg:ml-auto">
                 <h2 class="text-4xl md:text-6xl font-black text-white font-space uppercase tracking-tighter mb-4">Maison de Raux <br><span class="text-[#9d00ff]">Visuals</span></h2>
                 <p class="text-gray-400 font-light text-lg">
@@ -487,70 +486,54 @@
             </div>
         </div>
 
-        <!-- Advanced Photo Slider GSAP -->
-        <div class="slider-viewport mt-10" id="photo-slider-viewport">
-            <div id="photo-slider-track" class="slider-track items-center cursor-grab active:cursor-grabbing">
+        <!-- NEW: Advanced Photo Slider ScrollTrigger -->
+        <!-- Viewport disiapkan untuk di-pin oleh GSAP pada Desktop, atau native horizontal scroll pada Mobile -->
+        <div class="relative w-full h-auto md:h-screen flex items-center mt-10 md:mt-0 overflow-hidden" id="photo-slider-viewport">
+            <div id="photo-slider-track" class="flex items-center gap-6 md:gap-12 px-4 md:px-12 w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar md:will-change-transform" style="-webkit-overflow-scrolling: touch;">
                 
-                <!-- Photo Items (Portrait 3:4 Aspect Ratio) -->
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <!-- Photo Items: Diatur lebarnya menggunakan satuan VW agar proporsional di semua layar -->
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/IMG_8191.JPG') }}" alt="Maison de Raux 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/AZS02836.jpg') }}" alt="Maison de Raux 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/AZS02960.jpg') }}" alt="Maison de Raux 3" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/AZS03060.jpg') }}" alt="Maison de Raux 4" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/_DSF3577-Edit.jpeg') }}" alt="Maison de Raux 5" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/_DSF3612.jpeg') }}" alt="Maison de Raux 6" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/_DSF3681.jpeg') }}" alt="Maison de Raux 7" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <div class="photo-slide-item shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/_DSF8116 copy1 copy.jpeg') }}" alt="Maison de Raux 8" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
         </div>
-
-        <!-- Controls for Photo Slider -->
-        <div class="flex flex-col items-center gap-8 mt-12 relative z-20">
-            <div class="flex items-center gap-6">
-                <button id="photo-prev-slide" class="btn-nav-slider">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                
-                <!-- Progress Line -->
-                <div class="slider-progress-bg hidden md:block">
-                    <div id="photo-slider-progress" class="slider-progress-fill"></div>
-                </div>
-
-                <button id="photo-next-slide" class="btn-nav-slider">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </button>
-            </div>
-        </div>
+        <!-- Tombol kontrol manual sudah dihapus karena kita menggunakan interaksi Scroll / Swipe -->
 
         <!-- PROJECT 03: CINEMATOGRAPHY & MOTION (VIDEO REEL) -->
         <div class="mt-40 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-16 border-t border-white/5 pt-20">
@@ -573,14 +556,14 @@
             </div>
         </div>
 
-        <!-- REVISI MOBILE: Diubah menjadi Grid 2 Kolom di HP agar tidak makan tempat secara vertikal dan semuanya terlihat -->
-        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 pb-10">
-            <!-- Video 1 -->
-            <div class="load-iframe-btn relative rounded-xl md:rounded-2xl overflow-hidden group border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] md:shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
+        <!-- REVISI MOBILE: Diubah menjadi flex horizontal scroll (Carousel Snap) di HP, kembali ke Grid di Layar Besar -->
+        <div class="flex flex-nowrap sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10 overflow-x-auto snap-x snap-mandatory hide-scrollbar" style="-webkit-overflow-scrolling: touch;">
+            <!-- Video 1 (Added) -->
+            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -589,11 +572,11 @@
             </div>
 
             <!-- Video 2 -->
-            <div class="load-iframe-btn relative rounded-xl md:rounded-2xl overflow-hidden group border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] md:shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/1221.mp4') }}" data-title="Motion Reel - 02">
+            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/1221.mp4') }}" data-title="Motion Reel - 02">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -602,11 +585,11 @@
             </div>
 
             <!-- Video 3 -->
-            <div class="load-iframe-btn relative rounded-xl md:rounded-2xl overflow-hidden group border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] md:shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/c0026_1.MP4') }}" data-title="Motion Reel - 03">
+            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/c0026_1.MP4') }}" data-title="Motion Reel - 03">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -615,11 +598,11 @@
             </div>
 
             <!-- Video 4 -->
-            <div class="load-iframe-btn relative rounded-xl md:rounded-2xl overflow-hidden group border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] md:shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0027_1.mp4') }}" data-title="Motion Reel - 04">
+            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0027_1.mp4') }}" data-title="Motion Reel - 04">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -628,11 +611,11 @@
             </div>
 
             <!-- Video 5 -->
-            <div class="load-iframe-btn relative rounded-xl md:rounded-2xl overflow-hidden group border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] md:shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/fs-edu.mp4') }}" data-title="Motion Reel - 05">
+            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/fs-edu.mp4') }}" data-title="Motion Reel - 05">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -641,11 +624,11 @@
             </div>
 
             <!-- Video 6 -->
-            <div class="load-iframe-btn relative rounded-xl md:rounded-2xl overflow-hidden group border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] md:shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/Game deemo.mp4') }}" data-title="Motion Reel - 06">
+            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/Game deemo.mp4') }}" data-title="Motion Reel - 06">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">

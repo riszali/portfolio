@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 0. HERO SECTION VIDEO
+    // 0. HERO SECTION VIDEO (DIKEMBALIKAN KE ASLI)
     // ==========================================
     gsap.set("#hero-video", { opacity: 0.6 });
 
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
             scrub: 1,                     
             pin: true,                    
             anticipatePin: 1,
-            // PERBAIKAN MOBILE: Kalkulasi ulang posisi saat HP diputar/resize
             invalidateOnRefresh: true
         }
     });
@@ -42,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.5
     }, 0.2); 
 
-    // PERBAIKAN MOBILE: Refresh ScrollTrigger setelah semua konten selesai dimuat
+    // Refresh ScrollTrigger setelah semua konten selesai dimuat
     window.addEventListener("load", () => {
         ScrollTrigger.refresh();
     });
@@ -67,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 3. SLIDER UTAMA (CORE CAPABILITIES)
+    // 3. SLIDER UTAMA (CORE CAPABILITIES) - Manual Interaktif
     // ==========================================
     const sliderTrack = document.getElementById('slider-track');
     const prevSlideBtn = document.getElementById('prev-slide');
@@ -195,126 +194,76 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+
     // ==========================================
-    // 5. SLIDER FOTO GSAP (MAISON DE RAUX)
+    // 5. MAISON DE RAUX - SCROLLTRIGGER GALLERY
     // ==========================================
+    const photoViewport = document.getElementById('photo-slider-viewport');
     const photoTrack = document.getElementById('photo-slider-track');
-    const prevPhotoBtn = document.getElementById('photo-prev-slide');
-    const nextPhotoBtn = document.getElementById('photo-next-slide');
-    const photoProgress = document.getElementById('photo-slider-progress');
-    const photoSlides = document.querySelectorAll('.photo-slide-item');
 
-    if (photoTrack && photoSlides.length > 0) {
-        let currentPhotoIndex = 0;
-        let photoSlideWidth = photoSlides[0].offsetWidth + 24; 
-        const totalPhotoSlides = photoSlides.length;
+    if (photoViewport && photoTrack) {
+        let mm = gsap.matchMedia();
 
-        function updatePhotoSlider() {
-            photoSlideWidth = photoSlides[0].offsetWidth + 24;
-            const trackWidth = photoTrack.scrollWidth;
-            const viewportWidth = photoTrack.parentElement.offsetWidth;
-            const maxTranslate = Math.max(0, trackWidth - viewportWidth);
+        // --- DESKTOP / TABLET (Lebar > 768px) ---
+        mm.add("(min-width: 768px)", () => {
             
-            let targetX = currentPhotoIndex * photoSlideWidth;
-            if (targetX > maxTranslate) targetX = maxTranslate;
-
-            gsap.to(photoTrack, {
-                x: -targetX,
-                duration: 0.6,
-                ease: "power3.out"
+            // PERBAIKAN: Set CSS secara paksa via JS agar Native Scroll dari Tailwind/Browser 
+            // tidak bentrok (menyebabkan patah-patah/hilang) dengan animasi GSAP.
+            gsap.set(photoTrack, {
+                display: "flex",
+                flexWrap: "nowrap",
+                width: "max-content", // Menahan agar elemen tidak mengempis / collapse
+                overflowX: "visible"  // Penting agar konten diluar pandangan tidak terpotong
             });
-
-            if (photoProgress) {
-                const visibleSlides = Math.max(1, Math.floor(viewportWidth / photoSlideWidth));
-                const maxIndexForProgress = totalPhotoSlides - visibleSlides;
-                const safeMaxIndex = Math.max(1, maxIndexForProgress);
+            gsap.set(photoViewport, {
+                overflowX: "hidden" // Pembungkus disembunyikan overflow-nya
+            });
+            
+            // PERBAIKAN FOTO TERAKHIR: Hitung dengan tepat lebar total + margin layar ekstra
+            function getScrollAmount() {
+                // Total lebar deretan foto, dikurangi lebar window, lalu DITAMBAH ekstra offset 
+                // agar foto paling kanan punya cukup 'ruang nafas' untuk masuk ke tengah layar.
+                let trackWidth = photoTrack.scrollWidth;
+                let viewportWidth = window.innerWidth;
                 
-                let progressPercent = 20 + (currentPhotoIndex / safeMaxIndex) * 80;
-                progressPercent = Math.min(100, Math.max(20, progressPercent));
-
-                gsap.to(photoProgress, {
-                    width: `${progressPercent}%`,
-                    duration: 0.6,
-                    ease: "power3.out"
-                });
+                // Tambahan margin 20% dari lebar layar agar foto terakhir terseret penuh
+                return (trackWidth - viewportWidth) + (viewportWidth * 0.20); 
             }
 
-            if (prevPhotoBtn) {
-                prevPhotoBtn.disabled = currentPhotoIndex === 0;
-                gsap.to(prevPhotoBtn, { opacity: currentPhotoIndex === 0 ? 0.2 : 1, duration: 0.3 });
-            }
-            if (nextPhotoBtn) {
-                const isAtEnd = targetX >= maxTranslate;
-                nextPhotoBtn.disabled = isAtEnd;
-                gsap.to(nextPhotoBtn, { opacity: isAtEnd ? 0.2 : 1, duration: 0.3 });
-            }
-        }
-
-        if (nextPhotoBtn) {
-            nextPhotoBtn.addEventListener('click', () => {
-                photoSlideWidth = photoSlides[0].offsetWidth + 24;
-                const viewportWidth = photoTrack.parentElement.offsetWidth;
-                const maxIndex = totalPhotoSlides - Math.max(1, Math.floor(viewportWidth / photoSlideWidth));
-                if (currentPhotoIndex < maxIndex) { currentPhotoIndex++; updatePhotoSlider(); }
+            const tween = gsap.to(photoTrack, {
+                // Pakai ()=> agar dinamis saat layar pengguna di-resize
+                x: () => -getScrollAmount(), 
+                ease: "none", 
+                force3D: true 
             });
-        }
 
-        if (prevPhotoBtn) {
-            prevPhotoBtn.addEventListener('click', () => {
-                if (currentPhotoIndex > 0) { currentPhotoIndex--; updatePhotoSlider(); }
+            ScrollTrigger.create({
+                trigger: photoViewport,
+                start: "center center", 
+                // Sesuaikan 'end' persis dengan getScrollAmount agar rasio scroll mouse & animasi 1:1
+                end: () => `+=${getScrollAmount()}`, 
+                pin: true,
+                animation: tween,
+                scrub: 1.2, // Momentum agar pergerakan mouse halus
+                invalidateOnRefresh: true 
             });
-        }
 
-        updatePhotoSlider();
+            return () => {
+                // Pembersihan saat berpindah ke Mobile Mode
+                gsap.killTweensOf(photoTrack);
+                gsap.set(photoTrack, { clearProps: "all" });
+                gsap.set(photoViewport, { clearProps: "overflowX" });
+            };
+        });
 
-        // Drag to Scroll untuk Foto
-        let isPhotoDragging = false, startPhotoX, currentPhotoTranslate = 0, prevPhotoTranslate = 0;
-
-        const startPhotoDrag = (x) => {
-            isPhotoDragging = true; 
-            startPhotoX = x;
-            photoTrack.style.cursor = 'grabbing';
-            gsap.killTweensOf(photoTrack);
-            prevPhotoTranslate = gsap.getProperty(photoTrack, "x") || 0;
-        };
-
-        const stopPhotoDrag = () => {
-            if (!isPhotoDragging) return;
-            isPhotoDragging = false;
-            photoTrack.style.cursor = 'grab';
-            
-            const movedBy = currentPhotoTranslate - prevPhotoTranslate;
-            photoSlideWidth = photoSlides[0].offsetWidth + 24;
-            
-            if (movedBy < -50) { 
-                const maxIndex = totalPhotoSlides - Math.max(1, Math.floor(photoTrack.parentElement.offsetWidth / photoSlideWidth));
-                if (currentPhotoIndex < maxIndex) currentPhotoIndex++;
-            } else if (movedBy > 50) { 
-                if (currentPhotoIndex > 0) currentPhotoIndex--;
-            }
-            updatePhotoSlider();
-        };
-
-        const dragPhoto = (x) => {
-            if (!isPhotoDragging) return;
-            const walk = x - startPhotoX;
-            currentPhotoTranslate = prevPhotoTranslate + walk;
-            
-            const maxTranslate = Math.max(0, photoTrack.scrollWidth - photoTrack.parentElement.offsetWidth);
-            if (currentPhotoTranslate > 0) currentPhotoTranslate *= 0.3;
-            else if (currentPhotoTranslate < -maxTranslate) currentPhotoTranslate = -maxTranslate + ((currentPhotoTranslate + maxTranslate) * 0.3);
-
-            gsap.set(photoTrack, { x: currentPhotoTranslate });
-        };
-
-        photoTrack.addEventListener('mousedown', (e) => { e.preventDefault(); startPhotoDrag(e.pageX); });
-        window.addEventListener('mouseup', stopPhotoDrag);
-        window.addEventListener('mousemove', (e) => dragPhoto(e.pageX));
-        photoTrack.addEventListener('touchstart', (e) => startPhotoDrag(e.touches[0].clientX), { passive: true });
-        window.addEventListener('touchend', stopPhotoDrag);
-        window.addEventListener('touchmove', (e) => dragPhoto(e.touches[0].clientX), { passive: true });
-        window.addEventListener('resize', updatePhotoSlider);
+        // --- MOBILE / SMARTPHONE (Lebar < 768px) ---
+        mm.add("(max-width: 767px)", () => {
+            // Biarkan native swipe dari Tailwind berjalan
+            gsap.set(photoTrack, { clearProps: "all" });
+            gsap.set(photoViewport, { clearProps: "overflowX" });
+        });
     }
+
 
     // ==========================================
     // 6. LOGIKA MODAL PREVIEW (WEB & VIDEO FULLSCREEN)
@@ -324,7 +273,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalLoader = document.getElementById('modal-loader');
     const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // Pindahkan modal ke luar hirarki DOM (langsung di bawah <body>)
     if (previewModal) {
         document.body.appendChild(previewModal);
     }
@@ -338,9 +286,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
             modalLoader.style.opacity = '1';
             
-            // Tampilkan Modal
             previewModal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'hidden'; // Kunci scroll background
+            document.body.style.overflow = 'hidden'; 
             
             modalIframe.src = url;
 
@@ -355,8 +302,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', () => {
             previewModal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = ''; // Buka kembali scroll
-            modalIframe.src = 'about:blank'; // Hentikan video/web agar tidak memakan RAM
+            document.body.style.overflow = ''; 
+            modalIframe.src = 'about:blank'; 
         });
     }
 
