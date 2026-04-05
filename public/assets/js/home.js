@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     // ==========================================
+    // PERBAIKAN MOBILE: Abaikan resize dari address bar HP
+    // ==========================================
+    ScrollTrigger.config({ 
+        ignoreMobileResize: true 
+    });
+
+    // ==========================================
     // 0. HERO SECTION VIDEO
     // ==========================================
     gsap.set("#hero-video", { opacity: 0.6 });
@@ -15,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
             end: "+=150%",                
             scrub: 1,                     
             pin: true,                    
-            anticipatePin: 1              
+            anticipatePin: 1,
+            // PERBAIKAN MOBILE: Kalkulasi ulang posisi saat HP diputar/resize
+            invalidateOnRefresh: true
         }
     });
 
@@ -32,6 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "power2.out",
         duration: 0.5
     }, 0.2); 
+
+    // PERBAIKAN MOBILE: Refresh ScrollTrigger setelah semua konten selesai dimuat
+    window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+    });
 
     // ==========================================
     // 2. TIMELINE PENGALAMAN FADE-IN
@@ -567,9 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let distDelete = Math.sqrt(dx1 * dx1 + dy1 * dy1);
             let distCancel = Math.sqrt(dx2 * dx2 + dy2 * dy2);
             
-            // PERBAIKAN: Gunakan distCancel di posisi atas pembagian 
-            // Jika kursor dekat Rekrut (distDelete kecil), hasil mendekati 1 (Senang/Tersenyum)
-            // Jika kursor dekat Skip (distCancel kecil), hasil mendekati 0 (Panik/Sedih)
+            // Logika Emosi Boi
             let happiness = Math.pow(distCancel / (distCancel + distDelete), 0.75);
 
             target.happiness = happiness;
