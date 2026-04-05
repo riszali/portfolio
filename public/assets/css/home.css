@@ -118,6 +118,15 @@
     background: #9d00ff;
 }
 
+/* Hilangkan scrollbar untuk horizontal scroll di mobile */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 @keyframes pulse-fast {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }

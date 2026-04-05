@@ -432,10 +432,13 @@
                 <div class="relative w-full pt-[56.25%] bg-[#020202] overflow-hidden">
                     <img src="{{ asset('assets/images/2026-03-18 210733.png') }}" alt="Geely Fatmawati Cover" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-in-out z-0">
                     <div class="absolute inset-0 bg-linear-to-t from-[#050505]/60 via-transparent to-transparent z-0 pointer-events-none"></div>
-                    <div class="preview-overlay absolute inset-0 z-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <button class="load-iframe-btn flex items-center gap-3 bg-black/50 backdrop-blur-md border border-[#f9005b] text-[#f9005b] px-8 py-3.5 rounded-full font-bold hover:bg-[#f9005b] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(249,0,91,0.2)] hover:shadow-[0_0_30px_rgba(249,0,91,0.6)] cursor-pointer" data-url="https://geelyfatmawati.id" data-title="Geely Fatmawati">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                            Launch Experience
+                    
+                    <!-- PERBAIKAN: Tombol selalu muncul di Mobile dengan teks "Tap to Preview" -->
+                    <div class="preview-overlay absolute inset-0 z-10 flex flex-col items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        <button class="load-iframe-btn flex items-center gap-2 md:gap-3 bg-black/70 md:bg-black/50 backdrop-blur-md border border-[#f9005b] text-[#f9005b] px-5 py-2.5 md:px-8 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-[#f9005b] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(249,0,91,0.4)] hover:shadow-[0_0_30px_rgba(249,0,91,0.6)] cursor-pointer pointer-events-auto" data-url="https://geelyfatmawati.id" data-title="Geely Fatmawati">
+                            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <span class="md:hidden">Tap to Preview</span>
+                            <span class="hidden md:inline">Launch Experience</span>
                         </button>
                     </div>
                 </div>
@@ -448,10 +451,13 @@
                 <div class="relative w-full pt-[56.25%] bg-[#020202] overflow-hidden">
                     <img src="{{ asset('assets/images/2026-03-18 211448.png') }}" alt="Geely BSD Cover" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-in-out z-0">
                     <div class="absolute inset-0 bg-linear-to-t from-[#050505]/60 via-transparent to-transparent z-0 pointer-events-none"></div>
-                    <div class="preview-overlay absolute inset-0 z-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <button class="load-iframe-btn flex items-center gap-3 bg-black/50 backdrop-blur-md border border-[#9d00ff] text-[#9d00ff] px-8 py-3.5 rounded-full font-bold hover:bg-[#9d00ff] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(157,0,255,0.2)] hover:shadow-[0_0_30px_rgba(157,0,255,0.6)] cursor-pointer" data-url="https://geelybsd.id" data-title="Geely BSD">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                            Launch Experience
+                    
+                    <!-- PERBAIKAN: Tombol selalu muncul di Mobile dengan teks "Tap to Preview" -->
+                    <div class="preview-overlay absolute inset-0 z-10 flex flex-col items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        <button class="load-iframe-btn flex items-center gap-2 md:gap-3 bg-black/70 md:bg-black/50 backdrop-blur-md border border-[#9d00ff] text-[#9d00ff] px-5 py-2.5 md:px-8 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-[#9d00ff] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(157,0,255,0.4)] hover:shadow-[0_0_30px_rgba(157,0,255,0.6)] cursor-pointer pointer-events-auto" data-url="https://geelybsd.id" data-title="Geely BSD">
+                            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <span class="md:hidden">Tap to Preview</span>
+                            <span class="hidden md:inline">Launch Experience</span>
                         </button>
                     </div>
                 </div>
