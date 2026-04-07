@@ -179,132 +179,184 @@
     </section>
 
     <!-- ==============================================
-         SECTION 3: THE CAPABILITIES (Advanced Keahlian) 
+         SECTION 3: THE CAPABILITIES (Slider Redesign Premium) 
          ============================================== -->
     <section id="keahlian-section" class="py-24 text-white overflow-hidden relative z-30 bg-[#020202]">
         
         <!-- Background Image Setup -->
         <div class="absolute inset-0 z-0 pointer-events-none">
-            <img src="{{ asset('assets/images/img5.jpg') }}" alt="Core Capabilities Background" class="w-full h-full object-cover opacity-30">
-            <!-- Dark Overlay to blend with the rest of the dark theme -->
-            <div class="absolute inset-0 bg-[#020202]/80"></div>
-            <!-- Gradient Overlay for smooth top/bottom transitions -->
+            <img src="{{ asset('assets/images/img5.jpg') }}" alt="Core Capabilities Background" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-[#020202]/85"></div>
             <div class="absolute inset-0 bg-linear-to-b from-[#020202] via-transparent to-[#020202]"></div>
         </div>
 
-        <!-- Ornamen Latar -->
-        <div class="absolute top-10 left-[10%] w-120 h-120 bg-[#f9005b]/10 rounded-full blur-[120px] pointer-events-none z-0 transform-gpu"></div>
-        <div class="absolute bottom-10 right-[10%] w-120 h-120 bg-[#9d00ff]/10 rounded-full blur-[120px] pointer-events-none z-0 transform-gpu"></div>
+        <!-- Ornamen Latar (Glow effect lebih menyatu) -->
+        <div class="absolute top-10 left-[10%] w-[30rem] h-[30rem] bg-[#f9005b]/15 rounded-full blur-[150px] pointer-events-none z-0 transform-gpu"></div>
+        <div class="absolute bottom-10 right-[10%] w-[30rem] h-[30rem] bg-[#9d00ff]/15 rounded-full blur-[150px] pointer-events-none z-0 transform-gpu"></div>
 
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-            <div class="text-left mb-12">
-                <div class="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
+            
+            <div class="text-left mb-16 flex flex-col items-start">
+                <div class="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-xl">
                     <span class="text-xs font-mono text-[#f9005b] tracking-widest uppercase">/// Arsenal & Keahlian</span>
                 </div>
-                <h2 class="text-4xl md:text-6xl font-normal mb-4 drop-shadow-lg tracking-wide" style="font-family: 'Lobster', cursive;">
+                <h2 class="text-5xl md:text-7xl font-normal mb-4 drop-shadow-lg tracking-wide" style="font-family: 'Lobster', cursive;">
                     Core <span class="text-transparent bg-clip-text bg-linear-to-r from-[#f9005b] to-[#9d00ff]">Capabilities</span>
                 </h2>
-                <p class="text-lg text-gray-400 max-w-2xl font-mono tracking-wide">Spektrum keahlian saya yang menjembatani rekayasa perangkat lunak tingkat lanjut dengan produksi visual komersial.</p>
+                <p class="text-base md:text-lg text-gray-400 max-w-2xl font-light font-sans leading-relaxed">Spektrum keahlian komprehensif yang menjembatani rekayasa perangkat lunak tingkat lanjut dengan produksi visual komersial berstandar tinggi.</p>
             </div>
             
-            <!-- Viewport Slider GSAP -->
+            <!-- Viewport Slider JS (Struktur Tidak Diubah) -->
             <div class="slider-viewport">
-                <div id="slider-track" class="slider-track items-center">
+                <div id="slider-track" class="slider-track items-center py-8">
                     
                     <!-- Skill Card 1: Backend -->
-                    <article class="slide-item shrink-0 w-[85vw] md:w-95 h-130 flex flex-col rounded-4xl overflow-hidden relative group bg-black/60 backdrop-blur-xl border border-white/10 hover:border-[#f9005b]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-500">
-                        <div class="h-[55%] w-full relative overflow-hidden z-10">
-                            <div class="absolute top-5 left-5 z-20">
-                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2">
+                    <!-- Kelas Tailwind diperbarui untuk estetika Neo-Brutalism/Glassmorphism yang mewah -->
+                    <article class="slide-item shrink-0 w-[85vw] md:w-[26rem] lg:w-[28rem] h-[34rem] md:h-[38rem] flex flex-col rounded-[2rem] overflow-hidden relative group bg-[#080808] border border-white/10 hover:border-[#f9005b]/60 shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_0_50px_rgba(249,0,91,0.25)] transition-all duration-500 cursor-grab active:cursor-grabbing">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none z-10"></div>
+                        
+                        <div class="h-[45%] w-full relative overflow-hidden z-0">
+                            <div class="absolute top-6 left-6 z-20">
+                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-[#f9005b]/30 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2 shadow-lg">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#f9005b] animate-pulse"></span>
                                     SKILL_01
                                 </div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Backend Architecture">
-                            <div class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/90 to-transparent"></div>
+                            <!-- Efek gambar parallax lambat saat di hover -->
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-700 opacity-60 group-hover:opacity-90 mix-blend-lighten" alt="Backend Architecture">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-4 flex-1 flex flex-col justify-start relative z-10">
-                            <h3 class="text-3xl font-black text-white mb-3 tracking-wide uppercase italic group-hover:text-[#f9005b] transition-colors">Backend Architecture</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed font-sans font-light">Membangun pondasi server yang tangguh, aman, dan skalabel dengan Laravel & arsitektur RESTful API modern.</p>
+
+                        <div class="px-8 pb-8 pt-2 flex-1 flex flex-col relative z-20">
+                            <!-- Floating Icon Box -->
+                            <div class="w-14 h-14 bg-[#050505] text-[#f9005b] border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:-translate-y-2 group-hover:border-[#f9005b]/50 group-hover:shadow-[0_10px_30px_rgba(249,0,91,0.3)] transition-all duration-500 relative -mt-8 backdrop-blur-xl">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                            </div>
+                            
+                            <h3 class="text-3xl font-bold text-white mb-4 font-space tracking-tight group-hover:text-[#f9005b] transition-colors leading-tight">Backend <br/> Architecture</h3>
+                            <p class="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-auto">Membangun pondasi server yang tangguh, aman, dan skalabel dengan Laravel & arsitektur RESTful API modern untuk performa maksimal.</p>
+                            
+                            <!-- Aksen pemisah di bawah -->
+                            <div class="w-full h-px bg-gradient-to-r from-white/10 to-transparent mt-6"></div>
                         </div>
                     </article>
 
                     <!-- Skill Card 2: Frontend -->
-                    <article class="slide-item shrink-0 w-[85vw] md:w-95 h-130 flex flex-col rounded-4xl overflow-hidden relative group bg-black/60 backdrop-blur-xl border border-white/10 hover:border-[#9d00ff]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-500">
-                        <div class="h-[55%] w-full relative overflow-hidden z-10">
-                            <div class="absolute top-5 left-5 z-20">
-                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2">
+                    <article class="slide-item shrink-0 w-[85vw] md:w-[26rem] lg:w-[28rem] h-[34rem] md:h-[38rem] flex flex-col rounded-[2rem] overflow-hidden relative group bg-[#080808] border border-white/10 hover:border-[#9d00ff]/60 shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_0_50px_rgba(157,0,255,0.25)] transition-all duration-500 cursor-grab active:cursor-grabbing">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none z-10"></div>
+                        
+                        <div class="h-[45%] w-full relative overflow-hidden z-0">
+                            <div class="absolute top-6 left-6 z-20">
+                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-[#9d00ff]/30 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2 shadow-lg">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#9d00ff] animate-pulse"></span>
                                     SKILL_02
                                 </div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Immersive Frontend">
-                            <div class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/90 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-700 opacity-60 group-hover:opacity-90 mix-blend-lighten" alt="Immersive Frontend">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-4 flex-1 flex flex-col justify-start relative z-10">
-                            <h3 class="text-3xl font-black text-white mb-3 tracking-wide uppercase italic group-hover:text-[#9d00ff] transition-colors">Immersive Frontend</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed font-sans font-light">Meracik antarmuka pengguna interaktif (React/Vue/Tailwind) yang diperkaya dengan animasi GSAP untuk *user experience* kelas satu.</p>
+
+                        <div class="px-8 pb-8 pt-2 flex-1 flex flex-col relative z-20">
+                            <!-- Floating Icon Box -->
+                            <div class="w-14 h-14 bg-[#050505] text-[#9d00ff] border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:-translate-y-2 group-hover:border-[#9d00ff]/50 group-hover:shadow-[0_10px_30px_rgba(157,0,255,0.3)] transition-all duration-500 relative -mt-8 backdrop-blur-xl">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            </div>
+                            
+                            <h3 class="text-3xl font-bold text-white mb-4 font-space tracking-tight group-hover:text-[#9d00ff] transition-colors leading-tight">Immersive <br/> Frontend</h3>
+                            <p class="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-auto">Meracik antarmuka pengguna interaktif (React/Vue/Tailwind) yang diperkaya dengan animasi GSAP untuk user experience kelas satu.</p>
+                            
+                            <div class="w-full h-px bg-gradient-to-r from-white/10 to-transparent mt-6"></div>
                         </div>
                     </article>
 
                     <!-- Skill Card 3: Videography -->
-                    <article class="slide-item shrink-0 w-[85vw] md:w-95 h-130 flex flex-col rounded-4xl overflow-hidden relative group bg-black/60 backdrop-blur-xl border border-white/10 hover:border-[#f9005b]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-500">
-                        <div class="h-[55%] w-full relative overflow-hidden z-10">
-                            <div class="absolute top-5 left-5 z-20">
-                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#f9005b] animate-pulse"></span>
+                    <article class="slide-item shrink-0 w-[85vw] md:w-[26rem] lg:w-[28rem] h-[34rem] md:h-[38rem] flex flex-col rounded-[2rem] overflow-hidden relative group bg-[#080808] border border-white/10 hover:border-white/60 shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] transition-all duration-500 cursor-grab active:cursor-grabbing">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none z-10"></div>
+                        
+                        <div class="h-[45%] w-full relative overflow-hidden z-0">
+                            <div class="absolute top-6 left-6 z-20">
+                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/30 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2 shadow-lg">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                                     SKILL_03
                                 </div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Cinematography">
-                            <div class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/90 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-700 opacity-60 group-hover:opacity-90 mix-blend-lighten" alt="Cinematography">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-4 flex-1 flex flex-col justify-start relative z-10">
-                            <h3 class="text-3xl font-black text-white mb-3 tracking-wide uppercase italic group-hover:text-[#f9005b] transition-colors">Cinematography</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed font-sans font-light">Produksi video komersial, penyutradaraan, dan *color grading* profesional untuk menghasilkan materi promosi yang sinematik.</p>
+
+                        <div class="px-8 pb-8 pt-2 flex-1 flex flex-col relative z-20">
+                            <!-- Floating Icon Box -->
+                            <div class="w-14 h-14 bg-[#050505] text-white border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:-translate-y-2 group-hover:border-white/50 group-hover:shadow-[0_10px_30px_rgba(255,255,255,0.2)] transition-all duration-500 relative -mt-8 backdrop-blur-xl">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </div>
+                            
+                            <h3 class="text-3xl font-bold text-white mb-4 font-space tracking-tight group-hover:text-gray-300 transition-colors leading-tight">Advanced <br/> Cinematography</h3>
+                            <p class="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-auto">Produksi video komersial, penyutradaraan, dan color grading profesional untuk menghasilkan materi promosi bernilai visual tinggi.</p>
+                            
+                            <div class="w-full h-px bg-gradient-to-r from-white/10 to-transparent mt-6"></div>
                         </div>
                     </article>
 
                     <!-- Skill Card 4: Motion Graphics -->
-                    <article class="slide-item shrink-0 w-[85vw] md:w-95 h-130 flex flex-col rounded-4xl overflow-hidden relative group bg-black/60 backdrop-blur-xl border border-white/10 hover:border-[#9d00ff]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-500">
-                        <div class="h-[55%] w-full relative overflow-hidden z-10">
-                            <div class="absolute top-5 left-5 z-20">
-                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2">
+                    <article class="slide-item shrink-0 w-[85vw] md:w-[26rem] lg:w-[28rem] h-[34rem] md:h-[38rem] flex flex-col rounded-[2rem] overflow-hidden relative group bg-[#080808] border border-white/10 hover:border-[#9d00ff]/60 shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_0_50px_rgba(157,0,255,0.25)] transition-all duration-500 cursor-grab active:cursor-grabbing">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none z-10"></div>
+                        
+                        <div class="h-[45%] w-full relative overflow-hidden z-0">
+                            <div class="absolute top-6 left-6 z-20">
+                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-[#9d00ff]/30 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2 shadow-lg">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#9d00ff] animate-pulse"></span>
                                     SKILL_04
                                 </div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="VFX & Motion">
-                            <div class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/90 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-700 opacity-60 group-hover:opacity-90 mix-blend-lighten" alt="VFX & Motion">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-4 flex-1 flex flex-col justify-start relative z-10">
-                            <h3 class="text-3xl font-black text-white mb-3 tracking-wide uppercase italic group-hover:text-[#9d00ff] transition-colors">VFX & Motion</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed font-sans font-light">Integrasi grafis gerak tingkat lanjut (After Effects) dan visual effects untuk menghidupkan elemen diam menjadi karya audio-visual yang dinamis.</p>
+
+                        <div class="px-8 pb-8 pt-2 flex-1 flex flex-col relative z-20">
+                            <!-- Floating Icon Box -->
+                            <div class="w-14 h-14 bg-[#050505] text-[#9d00ff] border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:-translate-y-2 group-hover:border-[#9d00ff]/50 group-hover:shadow-[0_10px_30px_rgba(157,0,255,0.3)] transition-all duration-500 relative -mt-8 backdrop-blur-xl">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                            </div>
+                            
+                            <h3 class="text-3xl font-bold text-white mb-4 font-space tracking-tight group-hover:text-[#9d00ff] transition-colors leading-tight">VFX & <br/> Motion Graphics</h3>
+                            <p class="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-auto">Integrasi grafis gerak tingkat lanjut (After Effects) untuk menghidupkan elemen diam menjadi karya audio-visual yang dinamis.</p>
+                            
+                            <div class="w-full h-px bg-gradient-to-r from-white/10 to-transparent mt-6"></div>
                         </div>
                     </article>
 
                     <!-- Skill Card 5: 3D WebGL -->
-                    <article class="slide-item shrink-0 w-[85vw] md:w-95 h-130 flex flex-col rounded-4xl overflow-hidden relative group bg-black/60 backdrop-blur-xl border border-white/10 hover:border-[#f9005b]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-500">
-                        <div class="h-[55%] w-full relative overflow-hidden z-10">
-                            <div class="absolute top-5 left-5 z-20">
-                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2">
+                    <article class="slide-item shrink-0 w-[85vw] md:w-[26rem] lg:w-[28rem] h-[34rem] md:h-[38rem] flex flex-col rounded-[2rem] overflow-hidden relative group bg-[#080808] border border-white/10 hover:border-[#f9005b]/60 shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_0_50px_rgba(249,0,91,0.25)] transition-all duration-500 cursor-grab active:cursor-grabbing">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none z-10"></div>
+                        
+                        <div class="h-[45%] w-full relative overflow-hidden z-0">
+                            <div class="absolute top-6 left-6 z-20">
+                                <div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-[#f9005b]/30 rounded-full font-mono text-[10px] text-white tracking-[0.2em] flex items-center gap-2 shadow-lg">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#f9005b] animate-pulse"></span>
                                     SKILL_05
                                 </div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="3D & WebGL">
-                            <div class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/90 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-700 opacity-60 group-hover:opacity-90 mix-blend-lighten" alt="3D & WebGL">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-4 flex-1 flex flex-col justify-start relative z-10">
-                            <h3 class="text-3xl font-black text-white mb-3 tracking-wide uppercase italic group-hover:text-[#f9005b] transition-colors">3D Web Environments</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed font-sans font-light">Membawa objek kustom 3D ke dalam antarmuka web interaktif menggunakan Three.js dan WebGL, mendobrak batasan desain web 2D tradisional.</p>
+
+                        <div class="px-8 pb-8 pt-2 flex-1 flex flex-col relative z-20">
+                            <!-- Floating Icon Box -->
+                            <div class="w-14 h-14 bg-[#050505] text-[#f9005b] border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:-translate-y-2 group-hover:border-[#f9005b]/50 group-hover:shadow-[0_10px_30px_rgba(249,0,91,0.3)] transition-all duration-500 relative -mt-8 backdrop-blur-xl">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                            </div>
+                            
+                            <h3 class="text-3xl font-bold text-white mb-4 font-space tracking-tight group-hover:text-[#f9005b] transition-colors leading-tight">3D Web <br/> Environments</h3>
+                            <p class="text-gray-400 text-sm md:text-base font-light leading-relaxed mb-auto">Membawa objek kustom 3D ke dalam antarmuka web interaktif (Three.js), mendobrak batasan web 2D tradisional.</p>
+                            
+                            <div class="w-full h-px bg-gradient-to-r from-white/10 to-transparent mt-6"></div>
                         </div>
                     </article>
 
                 </div>
             </div>
 
-            <!-- Controls Slider GSAP -->
+            <!-- Controls Slider GSAP (Tetap Dipertahankan) -->
             <div class="flex flex-col items-center gap-8 mt-12 relative z-20">
                 <div class="flex items-center gap-6">
                     <button id="prev-slide" class="btn-nav-slider">
@@ -433,7 +485,6 @@
                     <img src="{{ asset('assets/images/2026-03-18 210733.png') }}" alt="Geely Fatmawati Cover" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-in-out z-0">
                     <div class="absolute inset-0 bg-linear-to-t from-[#050505]/60 via-transparent to-transparent z-0 pointer-events-none"></div>
                     
-                    <!-- PERBAIKAN: Tombol selalu muncul di Mobile dengan teks "Tap to Preview" -->
                     <div class="preview-overlay absolute inset-0 z-10 flex flex-col items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         <button class="load-iframe-btn flex items-center gap-2 md:gap-3 bg-black/70 md:bg-black/50 backdrop-blur-md border border-[#f9005b] text-[#f9005b] px-5 py-2.5 md:px-8 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-[#f9005b] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(249,0,91,0.4)] hover:shadow-[0_0_30px_rgba(249,0,91,0.6)] cursor-pointer pointer-events-auto" data-url="https://geelyfatmawati.id" data-title="Geely Fatmawati">
                             <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -452,7 +503,6 @@
                     <img src="{{ asset('assets/images/2026-03-18 211448.png') }}" alt="Geely BSD Cover" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-in-out z-0">
                     <div class="absolute inset-0 bg-linear-to-t from-[#050505]/60 via-transparent to-transparent z-0 pointer-events-none"></div>
                     
-                    <!-- PERBAIKAN: Tombol selalu muncul di Mobile dengan teks "Tap to Preview" -->
                     <div class="preview-overlay absolute inset-0 z-10 flex flex-col items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         <button class="load-iframe-btn flex items-center gap-2 md:gap-3 bg-black/70 md:bg-black/50 backdrop-blur-md border border-[#9d00ff] text-[#9d00ff] px-5 py-2.5 md:px-8 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-[#9d00ff] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(157,0,255,0.4)] hover:shadow-[0_0_30px_rgba(157,0,255,0.6)] cursor-pointer pointer-events-auto" data-url="https://geelybsd.id" data-title="Geely BSD">
                             <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -486,12 +536,9 @@
             </div>
         </div>
 
-        <!-- NEW: Advanced Photo Slider ScrollTrigger -->
-        <!-- Viewport disiapkan untuk di-pin oleh GSAP pada Desktop, atau native horizontal scroll pada Mobile -->
         <div class="relative w-full h-auto md:h-screen flex items-center mt-10 md:mt-0 overflow-hidden" id="photo-slider-viewport">
             <div id="photo-slider-track" class="flex items-center gap-6 md:gap-12 px-4 md:px-12 w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar md:will-change-transform" style="-webkit-overflow-scrolling: touch;">
                 
-                <!-- Photo Items: Diatur lebarnya menggunakan satuan VW agar proporsional di semua layar -->
                 <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/IMG_8191.JPG') }}" alt="Maison de Raux 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
@@ -533,7 +580,6 @@
                 </div>
             </div>
         </div>
-        <!-- Tombol kontrol manual sudah dihapus karena kita menggunakan interaksi Scroll / Swipe -->
 
         <!-- PROJECT 03: CINEMATOGRAPHY & MOTION (VIDEO REEL) -->
         <div class="mt-40 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-16 border-t border-white/5 pt-20">
@@ -556,9 +602,7 @@
             </div>
         </div>
 
-        <!-- REVISI MOBILE: Diubah menjadi flex horizontal scroll (Carousel Snap) di HP, kembali ke Grid di Layar Besar -->
         <div class="flex flex-nowrap sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10 overflow-x-auto snap-x snap-mandatory hide-scrollbar" style="-webkit-overflow-scrolling: touch;">
-            <!-- Video 1 (Added) -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -571,7 +615,6 @@
                 </video>
             </div>
 
-            <!-- Video 2 -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/1221.mp4') }}" data-title="Motion Reel - 02">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -584,7 +627,6 @@
                 </video>
             </div>
 
-            <!-- Video 3 -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/c0026_1.MP4') }}" data-title="Motion Reel - 03">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -597,7 +639,6 @@
                 </video>
             </div>
 
-            <!-- Video 4 -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0027_1.mp4') }}" data-title="Motion Reel - 04">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -610,7 +651,6 @@
                 </video>
             </div>
 
-            <!-- Video 5 -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/fs-edu.mp4') }}" data-title="Motion Reel - 05">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -623,7 +663,6 @@
                 </video>
             </div>
 
-            <!-- Video 6 -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/Game deemo.mp4') }}" data-title="Motion Reel - 06">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
