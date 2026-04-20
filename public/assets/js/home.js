@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 0. HERO SECTION VIDEO (DIKEMBALIKAN KE ASLI)
+    // 0. HERO SECTION VIDEO
     // ==========================================
     gsap.set("#hero-video", { opacity: 0.6 });
 
@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.5
     }, 0.2); 
 
-    // Refresh ScrollTrigger setelah semua konten selesai dimuat
     window.addEventListener("load", () => {
         ScrollTrigger.refresh();
     });
@@ -66,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 3. SLIDER UTAMA (CORE CAPABILITIES) - Manual Interaktif
+    // 3. SLIDER UTAMA (CORE CAPABILITIES)
     // ==========================================
     const sliderTrack = document.getElementById('slider-track');
     const prevSlideBtn = document.getElementById('prev-slide');
@@ -76,11 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (sliderTrack && slides.length > 0) {
         let currentIndex = 0;
-        let slideWidth = slides[0].offsetWidth + 24; 
+        let slideWidth = slides[0].offsetWidth + (window.innerWidth >= 768 ? 32 : 24); 
         const totalSlides = slides.length;
 
         function updateSliderPosition() {
-            slideWidth = slides[0].offsetWidth + 24;
+            slideWidth = slides[0].offsetWidth + (window.innerWidth >= 768 ? 32 : 24);
             const trackWidth = sliderTrack.scrollWidth;
             const viewportWidth = sliderTrack.parentElement.offsetWidth;
             const maxTranslate = Math.max(0, trackWidth - viewportWidth);
@@ -122,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (nextSlideBtn) {
             nextSlideBtn.addEventListener('click', () => {
-                slideWidth = slides[0].offsetWidth + 24;
+                slideWidth = slides[0].offsetWidth + (window.innerWidth >= 768 ? 32 : 24);
                 const viewportWidth = sliderTrack.parentElement.offsetWidth;
                 const maxIndex = totalSlides - Math.max(1, Math.floor(viewportWidth / slideWidth));
                 if (currentIndex < maxIndex) { currentIndex++; updateSliderPosition(); }
@@ -150,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isDragging) return;
             isDragging = false; sliderTrack.style.cursor = 'grab';
             const movedBy = currentTranslate - prevTranslate;
-            slideWidth = slides[0].offsetWidth + 24;
+            slideWidth = slides[0].offsetWidth + (window.innerWidth >= 768 ? 32 : 24);
             
             if (movedBy < -50) { 
                 const maxIndex = totalSlides - Math.max(1, Math.floor(sliderTrack.parentElement.offsetWidth / slideWidth));
@@ -174,9 +173,16 @@ document.addEventListener("DOMContentLoaded", () => {
         sliderTrack.addEventListener('mousedown', (e) => { e.preventDefault(); startDrag(e.pageX); });
         window.addEventListener('mouseup', stopDrag);
         window.addEventListener('mousemove', (e) => drag(e.pageX));
+        
+        // Touch events for mobile dragging (dengan perbaikan scroll native)
         sliderTrack.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
         window.addEventListener('touchend', stopDrag);
-        window.addEventListener('touchmove', (e) => drag(e.touches[0].clientX), { passive: true });
+        window.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+               drag(e.touches[0].clientX);
+            }
+        }, { passive: true });
+        
         window.addEventListener('resize', updateSliderPosition);
     }
 
@@ -194,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
     // ==========================================
     // 5. MAISON DE RAUX - SCROLLTRIGGER GALLERY
     // ==========================================
@@ -204,34 +209,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (photoViewport && photoTrack) {
         let mm = gsap.matchMedia();
 
-        // --- DESKTOP / TABLET (Lebar > 768px) ---
-        mm.add("(min-width: 768px)", () => {
-            
-            // PERBAIKAN: Set CSS secara paksa via JS agar Native Scroll dari Tailwind/Browser 
-            // tidak bentrok (menyebabkan patah-patah/hilang) dengan animasi GSAP.
+        // --- DESKTOP / TABLET ---
+        mm.add("(min-width: 1024px)", () => {
             gsap.set(photoTrack, {
                 display: "flex",
                 flexWrap: "nowrap",
-                width: "max-content", // Menahan agar elemen tidak mengempis / collapse
-                overflowX: "visible"  // Penting agar konten diluar pandangan tidak terpotong
+                width: "max-content",
+                overflowX: "visible" 
             });
             gsap.set(photoViewport, {
-                overflowX: "hidden" // Pembungkus disembunyikan overflow-nya
+                overflowX: "hidden" 
             });
             
-            // PERBAIKAN FOTO TERAKHIR: Hitung dengan tepat lebar total + margin layar ekstra
             function getScrollAmount() {
-                // Total lebar deretan foto, dikurangi lebar window, lalu DITAMBAH ekstra offset 
-                // agar foto paling kanan punya cukup 'ruang nafas' untuk masuk ke tengah layar.
                 let trackWidth = photoTrack.scrollWidth;
                 let viewportWidth = window.innerWidth;
-                
-                // Tambahan margin 20% dari lebar layar agar foto terakhir terseret penuh
                 return (trackWidth - viewportWidth) + (viewportWidth * 0.20); 
             }
 
             const tween = gsap.to(photoTrack, {
-                // Pakai ()=> agar dinamis saat layar pengguna di-resize
                 x: () => -getScrollAmount(), 
                 ease: "none", 
                 force3D: true 
@@ -240,30 +236,34 @@ document.addEventListener("DOMContentLoaded", () => {
             ScrollTrigger.create({
                 trigger: photoViewport,
                 start: "center center", 
-                // Sesuaikan 'end' persis dengan getScrollAmount agar rasio scroll mouse & animasi 1:1
                 end: () => `+=${getScrollAmount()}`, 
                 pin: true,
                 animation: tween,
-                scrub: 1.2, // Momentum agar pergerakan mouse halus
+                scrub: 1.2, 
                 invalidateOnRefresh: true 
             });
 
             return () => {
-                // Pembersihan saat berpindah ke Mobile Mode
                 gsap.killTweensOf(photoTrack);
                 gsap.set(photoTrack, { clearProps: "all" });
                 gsap.set(photoViewport, { clearProps: "overflowX" });
             };
         });
 
-        // --- MOBILE / SMARTPHONE (Lebar < 768px) ---
-        mm.add("(max-width: 767px)", () => {
-            // Biarkan native swipe dari Tailwind berjalan
+        // --- MOBILE / SMARTPHONE ---
+        mm.add("(max-width: 1023px)", () => {
+            gsap.killTweensOf(photoTrack);
             gsap.set(photoTrack, { clearProps: "all" });
-            gsap.set(photoViewport, { clearProps: "overflowX" });
+            gsap.set(photoViewport, { clearProps: "all" });
+            
+            gsap.set(photoTrack, { 
+                overflowX: "auto", 
+                display: "flex", 
+                flexWrap: "nowrap",
+                width: "100%"
+            });
         });
     }
-
 
     // ==========================================
     // 6. LOGIKA MODAL PREVIEW (WEB & VIDEO FULLSCREEN)
@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 7. SCRIPT THREE.JS PORTAPLANE
+    // 7. SCRIPT THREE.JS PORTAPLANE (DIKEMBALIKAN 100%)
     // ==========================================
     let isPortaplaneVisible = false;
     const portaplaneSection = document.getElementById('section-portaplane');

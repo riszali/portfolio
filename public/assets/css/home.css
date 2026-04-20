@@ -14,13 +14,19 @@
 }
 .slider-track {
     display: flex;
-    gap: 32px; /* Dibuat sedikit lebih renggang untuk efek mewah */
+    gap: 24px;
     will-change: transform;
-    transition: none; /* Dikelola oleh GSAP */
+    transition: none;
+    /* PERBAIKAN: Memungkinkan pengguna HP scroll ke bawah walau menyentuh slider */
+    touch-action: pan-y; 
 }
+@media (min-width: 768px) {
+    .slider-track {
+        gap: 32px; 
+    }
+}
+
 .btn-nav-slider {
-    width: 64px;
-    height: 64px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.03);
@@ -45,7 +51,6 @@
     transform: scale(0.9);
 }
 
-/* Progress bar slider dengan desain yang lebih seamless */
 .slider-progress-bg {
     width: 250px;
     height: 3px;
@@ -66,15 +71,12 @@
     border-radius: 10px;
 }
 
-/* Premium Tech Card Spotlight & 3D Effect */
 .slide-item {
     position: relative;
-    /* Set up untuk efek kemiringan 3D di GSAP */
     transform-style: preserve-3d;
     will-change: transform;
 }
 .slide-item > * {
-    /* Mencegah isi dalam Card berkedip ketika ditransformasi 3D */
     transform: translateZ(0);
 }
 .slide-item::before {
@@ -83,7 +85,6 @@
     inset: 0;
     z-index: 15;
     pointer-events: none;
-    /* Efek cahaya radial Spotlight mengikuti posisi cursor */
     background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -105,15 +106,7 @@
     100% { transform: translateX(-50%); }
 }
 
-/* --- Untuk Canvas Portaplane agar presisi --- */
-#portaplane-canvas-wrapper canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-    outline: none;
-}
-
-/* --- STYLING KHUSUS WEB DEVELOPMENT (MODAL & SCROLLBAR) --- */
+/* --- KHUSUS WEB DEVELOPMENT (MODAL & SCROLLBAR NATIVE) --- */
 .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
 }
@@ -128,23 +121,15 @@
     background: #9d00ff;
 }
 
-/* Hilangkan scrollbar untuk horizontal scroll di mobile */
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
+/* PERBAIKAN: Memastikan scrollbar tidak terlihat tetapi fungsi geser native tetap berjalan */
 .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
-@keyframes pulse-fast {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-.loading-pulse {
-    animation: pulse-fast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    pointer-events: none;
-}
 
 /* ========================================================================
    STYLING INTERACTIVE JOKE CTA (BOI CHARACTER)
@@ -173,12 +158,18 @@
 
 .Confirm-Header-Button {
     display: block;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     flex: 0 0 auto;
     transition: background-color 0.3s;
     margin-right: 0.8rem;
+}
+@media (min-width: 768px) {
+    .Confirm-Header-Button {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
 }
 
 .Confirm-Header-Button_Close { background-color: #f9005b; }
@@ -194,8 +185,11 @@
     transform: translateX(50%);
     color: white;
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 0.8rem;
     letter-spacing: 2px;
+}
+@media (min-width: 768px) {
+    .Confirm-Header-Title { font-size: 1rem; }
 }
 
 .Confirm-Body {
@@ -222,15 +216,22 @@
     color: #fff;
     border-radius: 1rem;
     text-decoration: none;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     margin-bottom: 1rem;
-    min-width: 12rem;
+    min-width: 10rem;
     text-align: center;
     transition: all 0.3s;
     font-weight: bold;
     font-family: 'Space Grotesk', sans-serif;
     z-index: 20;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+}
+@media (min-width: 768px) {
+    .Confirm-Body-Button {
+        padding: 1rem 2rem;
+        min-width: 12rem;
+        font-size: 0.9rem;
+    }
 }
 
 .Confirm-Body-Button_Cancel {
@@ -367,7 +368,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .Confirm-UI { height: 520px; } 
+    .Confirm-UI { height: 480px; } 
     .Confirm-Body { flex-direction: column; align-items: center; justify-content: flex-end; margin: 1rem; }
     .Confirm-Body-Button { width: 100%; margin-bottom: 0.5rem; }
     .Boi { width: 12rem; height: 12rem; top: 55%; } 

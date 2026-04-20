@@ -10,8 +10,8 @@
          SECTION 1: THE HOOK (Hero Section) 
          ============================================== -->
     <section id="hero-section" class="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#050505]">
-        <video id="hero-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 z-0">
-            <source src="{{ asset('assets/video/3d-home-page.mp4') }}" type="video/mp4">
+        <video id="hero-video" autoplay loop muted playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-0 z-0">
+            <source src="{{ asset('assets/video/3d-home-page.mp4') }}#t=0.001" type="video/mp4">
         </video>
         
         <div id="hero-text" class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto opacity-0 scale-90 will-change-transform flex flex-col items-center">
@@ -443,7 +443,7 @@
         </div>
     </section>
 
-<!-- SECTION 5: SELECTED WORKS (GEELY CASE STUDY) -->
+<!-- SECTION 6: SELECTED WORKS (GEELY CASE STUDY) -->
 <section id="lab-section" class="py-24 md:py-32 bg-[#000000] relative z-30 border-t border-white/5 overflow-hidden">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-[#9d00ff]/20 blur-[100px] pointer-events-none"></div>
     <div class="absolute top-1/2 left-0 w-1/3 h-full bg-linear-to-r from-black to-transparent z-10 pointer-events-none"></div>
@@ -536,8 +536,9 @@
             </div>
         </div>
 
+        <!-- PERBAIKAN: Menambahkan elemen flex-nowrap agar scroll horizontal mobile berfungsi -->
         <div class="relative w-full h-auto md:h-screen flex items-center mt-10 md:mt-0 overflow-hidden" id="photo-slider-viewport">
-            <div id="photo-slider-track" class="flex items-center gap-6 md:gap-12 px-4 md:px-12 w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar md:will-change-transform" style="-webkit-overflow-scrolling: touch;">
+            <div id="photo-slider-track" class="flex flex-nowrap items-center gap-6 md:gap-12 px-4 md:px-12 w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar md:will-change-transform" style="-webkit-overflow-scrolling: touch;">
                 
                 <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
@@ -564,6 +565,7 @@
                     <img src="{{ asset('assets/images/_DSF3577-Edit.jpeg') }}" alt="Maison de Raux 5" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
+                <!-- FOTO YANG SEMPAT TERHAPUS (SUDAH DIKEMBALIKAN UTUH) -->
                 <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/_DSF3612.jpeg') }}" alt="Maison de Raux 6" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
@@ -603,6 +605,8 @@
         </div>
 
         <div class="flex flex-nowrap sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10 overflow-x-auto snap-x snap-mandatory hide-scrollbar" style="-webkit-overflow-scrolling: touch;">
+            
+            <!-- PERBAIKAN: Menambahkan #t=0.001 dan preload="metadata" pada ke-6 video utuh -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -610,8 +614,8 @@
                         <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
-                <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                    <source src="{{ asset('assets/video/C0291_2.mp4') }}" type="video/mp4">
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/C0291_2.mp4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
 
@@ -622,8 +626,8 @@
                         <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
-                <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                    <source src="{{ asset('assets/video/1221.mp4') }}" type="video/mp4">
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/1221.mp4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
 
@@ -634,11 +638,12 @@
                         <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
-                <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                    <source src="{{ asset('assets/video/c0026_1.MP4') }}" type="video/mp4">
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/c0026_1.MP4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
 
+            <!-- VIDEO YANG SEMPAT TERHAPUS (SUDAH DIKEMBALIKAN UTUH) -->
             <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0027_1.mp4') }}" data-title="Motion Reel - 04">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
@@ -646,8 +651,8 @@
                         <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
-                <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                    <source src="{{ asset('assets/video/C0027_1.mp4') }}" type="video/mp4">
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/C0027_1.mp4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
 
@@ -658,8 +663,8 @@
                         <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
-                <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                    <source src="{{ asset('assets/video/fs-edu.mp4') }}" type="video/mp4">
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/fs-edu.mp4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
 
@@ -670,8 +675,8 @@
                         <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
-                <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                    <source src="{{ asset('assets/video/Game deemo.mp4') }}" type="video/mp4">
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/Game deemo.mp4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
         </div>
