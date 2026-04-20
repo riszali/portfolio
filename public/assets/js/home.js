@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener('mouseup', stopDrag);
         window.addEventListener('mousemove', (e) => drag(e.pageX));
         
-        // Touch events for mobile dragging (dengan perbaikan scroll native)
+        // Touch events for mobile dragging
         sliderTrack.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
         window.addEventListener('touchend', stopDrag);
         window.addEventListener('touchmove', (e) => {
@@ -207,61 +207,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const photoTrack = document.getElementById('photo-slider-track');
 
     if (photoViewport && photoTrack) {
-        let mm = gsap.matchMedia();
+        // PERBAIKAN: Menghapus batas ukuran layar (matchMedia) agar 
+        // GSAP ScrollTrigger berlaku untuk desktop dan mobile
+        
+        gsap.set(photoTrack, {
+            display: "flex",
+            flexWrap: "nowrap",
+            width: "max-content",
+            overflowX: "visible" 
+        });
+        gsap.set(photoViewport, {
+            overflowX: "hidden" 
+        });
+        
+        function getScrollAmount() {
+            let trackWidth = photoTrack.scrollWidth;
+            let viewportWidth = window.innerWidth;
+            return (trackWidth - viewportWidth) + (viewportWidth * 0.15); 
+        }
 
-        // --- DESKTOP / TABLET ---
-        mm.add("(min-width: 1024px)", () => {
-            gsap.set(photoTrack, {
-                display: "flex",
-                flexWrap: "nowrap",
-                width: "max-content",
-                overflowX: "visible" 
-            });
-            gsap.set(photoViewport, {
-                overflowX: "hidden" 
-            });
-            
-            function getScrollAmount() {
-                let trackWidth = photoTrack.scrollWidth;
-                let viewportWidth = window.innerWidth;
-                return (trackWidth - viewportWidth) + (viewportWidth * 0.20); 
-            }
-
-            const tween = gsap.to(photoTrack, {
-                x: () => -getScrollAmount(), 
-                ease: "none", 
-                force3D: true 
-            });
-
-            ScrollTrigger.create({
-                trigger: photoViewport,
-                start: "center center", 
-                end: () => `+=${getScrollAmount()}`, 
-                pin: true,
-                animation: tween,
-                scrub: 1.2, 
-                invalidateOnRefresh: true 
-            });
-
-            return () => {
-                gsap.killTweensOf(photoTrack);
-                gsap.set(photoTrack, { clearProps: "all" });
-                gsap.set(photoViewport, { clearProps: "overflowX" });
-            };
+        const tween = gsap.to(photoTrack, {
+            x: () => -getScrollAmount(), 
+            ease: "none", 
+            force3D: true 
         });
 
-        // --- MOBILE / SMARTPHONE ---
-        mm.add("(max-width: 1023px)", () => {
-            gsap.killTweensOf(photoTrack);
-            gsap.set(photoTrack, { clearProps: "all" });
-            gsap.set(photoViewport, { clearProps: "all" });
-            
-            gsap.set(photoTrack, { 
-                overflowX: "auto", 
-                display: "flex", 
-                flexWrap: "nowrap",
-                width: "100%"
-            });
+        ScrollTrigger.create({
+            trigger: photoViewport,
+            start: "center center", 
+            end: () => `+=${getScrollAmount()}`, 
+            pin: true,
+            animation: tween,
+            scrub: 1.2, 
+            invalidateOnRefresh: true 
         });
     }
 
@@ -308,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 7. SCRIPT THREE.JS PORTAPLANE (DIKEMBALIKAN 100%)
+    // 7. SCRIPT THREE.JS PORTAPLANE
     // ==========================================
     let isPortaplaneVisible = false;
     const portaplaneSection = document.getElementById('section-portaplane');

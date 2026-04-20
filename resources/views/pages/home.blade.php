@@ -536,7 +536,6 @@
             </div>
         </div>
 
-        <!-- PERBAIKAN: Menambahkan elemen flex-nowrap agar scroll horizontal mobile berfungsi -->
         <div class="relative w-full h-auto md:h-screen flex items-center mt-10 md:mt-0 overflow-hidden" id="photo-slider-viewport">
             <div id="photo-slider-track" class="flex flex-nowrap items-center gap-6 md:gap-12 px-4 md:px-12 w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar md:will-change-transform" style="-webkit-overflow-scrolling: touch;">
                 
@@ -565,7 +564,6 @@
                     <img src="{{ asset('assets/images/_DSF3577-Edit.jpeg') }}" alt="Maison de Raux 5" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <!-- FOTO YANG SEMPAT TERHAPUS (SUDAH DIKEMBALIKAN UTUH) -->
                 <div class="photo-slide-item shrink-0 w-[80vw] md:w-[35vw] lg:w-[25vw] aspect-[3/4] relative rounded-3xl overflow-hidden group border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] snap-center">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     <img src="{{ asset('assets/images/_DSF3612.jpeg') }}" alt="Maison de Raux 6" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
@@ -604,14 +602,14 @@
             </div>
         </div>
 
-        <div class="flex flex-nowrap sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10 overflow-x-auto snap-x snap-mandatory hide-scrollbar" style="-webkit-overflow-scrolling: touch;">
+        <!-- PERBAIKAN: Diubah menjadi Grid Layout (2 Kolom HP = 3 Baris, 3 Kolom Desktop = 2 Baris) -->
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10 w-full">
             
-            <!-- PERBAIKAN: Menambahkan #t=0.001 dan preload="metadata" pada ke-6 video utuh -->
-            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -619,11 +617,11 @@
                 </video>
             </div>
 
-            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/1221.mp4') }}" data-title="Motion Reel - 02">
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/1221.mp4') }}" data-title="Motion Reel - 02">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -631,11 +629,11 @@
                 </video>
             </div>
 
-            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/c0026_1.MP4') }}" data-title="Motion Reel - 03">
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/c0026_1.MP4') }}" data-title="Motion Reel - 03">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -643,12 +641,11 @@
                 </video>
             </div>
 
-            <!-- VIDEO YANG SEMPAT TERHAPUS (SUDAH DIKEMBALIKAN UTUH) -->
-            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0027_1.mp4') }}" data-title="Motion Reel - 04">
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0027_1.mp4') }}" data-title="Motion Reel - 04">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -656,11 +653,11 @@
                 </video>
             </div>
 
-            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/fs-edu.mp4') }}" data-title="Motion Reel - 05">
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/fs-edu.mp4') }}" data-title="Motion Reel - 05">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
@@ -668,11 +665,11 @@
                 </video>
             </div>
 
-            <div class="load-iframe-btn shrink-0 w-[85vw] sm:w-auto snap-center relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/Game deemo.mp4') }}" data-title="Motion Reel - 06">
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/Game deemo.mp4') }}" data-title="Motion Reel - 06">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                 <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
