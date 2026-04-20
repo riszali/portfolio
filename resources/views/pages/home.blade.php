@@ -287,7 +287,7 @@
                         <div class="px-8 pb-8 pt-2 flex-1 flex flex-col relative z-20">
                             <!-- Floating Icon Box -->
                             <div class="w-14 h-14 bg-[#050505] text-white border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.5)] group-hover:-translate-y-2 group-hover:border-white/50 group-hover:shadow-[0_10px_30px_rgba(255,255,255,0.2)] transition-all duration-500 relative -mt-8 backdrop-blur-xl">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 00-2-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                             </div>
                             
                             <h3 class="text-3xl font-bold text-white mb-4 font-space tracking-tight group-hover:text-gray-300 transition-colors leading-tight">Advanced <br/> Cinematography</h3>
@@ -602,7 +602,7 @@
             </div>
         </div>
 
-        <!-- PERBAIKAN: Diubah menjadi Grid Layout (2 Kolom HP = 3 Baris, 3 Kolom Desktop = 2 Baris) -->
+        <!-- Grid Layout (2 Kolom HP = 5 Baris, 3 Kolom Desktop = 3 Baris) -->
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-10 w-full">
             
             <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/C0291_2.mp4') }}" data-title="Motion Reel - 01">
@@ -674,6 +674,43 @@
                 </div>
                 <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
                     <source src="{{ asset('assets/video/Game deemo.mp4') }}#t=0.001" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- PENAMBAHAN 3 VIDEO BARU -->
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/tuyul.mp4') }}" data-title="Motion Reel - 07">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </div>
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/tuyul.mp4') }}#t=0.001" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/0404(1).MP4') }}" data-title="Motion Reel - 08">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </div>
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/0404(1).MP4') }}#t=0.001" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="load-iframe-btn relative rounded-2xl overflow-hidden group border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] aspect-video bg-[#050505] cursor-pointer" data-url="{{ asset('assets/video/IMG_6559.mp4') }}" data-title="Motion Reel - 09">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </div>
+                <video autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                    <source src="{{ asset('assets/video/IMG_6559.mp4') }}#t=0.001" type="video/mp4">
                 </video>
             </div>
         </div>
